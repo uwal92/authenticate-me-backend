@@ -22,10 +22,10 @@ app.use(cookieParser());
 app.use(express.json());
 
 // Security Middleware
-if (!isProduction) {
+// if (!isProduction) {
   const cors = require('cors');
   app.use(cors()); // Enable CORS in development
-}
+// }
 
 app.use(
   helmet.crossOriginResourcePolicy({
