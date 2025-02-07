@@ -10,7 +10,7 @@ const { ValidationError } = require('sequelize');
 const app = express();
 
 // Check if the environment is production
-const isProduction = environment !== 'production';
+const isProduction = environment === 'production';
 
 // Middleware for logging
 app.use(morgan('dev'));
@@ -22,10 +22,17 @@ app.use(cookieParser());
 app.use(express.json());
 
 // Security Middleware
-// if (!isProduction) {
-  const cors = require('cors');
-  app.use(cors()); // Enable CORS in development
-// }
+if (!isProduction) {
+  app.use(cors());
+} else {
+  app.use(
+    cors({
+      origin: 'https://authenticate-me-frontend-931x.onrender.com', 
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      credentials: true, 
+    })
+  );
+}
 
 app.use(
   helmet.crossOriginResourcePolicy({
