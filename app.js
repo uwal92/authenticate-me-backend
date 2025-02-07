@@ -10,7 +10,7 @@ const { ValidationError } = require('sequelize');
 const app = express();
 
 // Check if the environment is production
-const isProduction = environment === 'production';
+const isProduction = environment !== 'production';
 
 // Middleware for logging
 app.use(morgan('dev'));
