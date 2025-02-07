@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const routes = require('./routes');
 const { environment } = require('./config');
 const { ValidationError } = require('sequelize');
+const cors = require('cors');
 
 const app = express();
 
