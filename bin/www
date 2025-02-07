@@ -7,6 +7,8 @@ const { port } = require('../config');
 const app = require('../app');
 const db = require('../db/models');
 
+console.log("DATABASE_URL:", process.env.DATABASE_URL);
+
 db.sequelize
   .authenticate()
   .then(() => {
